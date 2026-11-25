@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f8f6" />
+  <title>HeadsUp — Sound awareness</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 10v4M7 6v12M11 3v18M15 7v10M19 10v4" /></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M9 22h6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="i-knock" viewBox="0 0 24 24"><path d="M12 3v3M4.9 5.9 7 8M3 13h3M18 8l2.1-2.1M18 13h3M9 18a3 3 0 0 1 6 0v3H9z"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="m5 11 2-5h10l2 5M3 11h18v7H3zM5 18v2M19 18v2M6 14h.01M18 14h.01"/></symbol>
+    <symbol id="i-dog" viewBox="0 0 24 24"><path d="M4 13 3 8l5 2 4-3 5 2 3-2 1 6-3 2-1 5h-4l-1-4H9l-1 4H5l1-6z"/></symbol>
+    <symbol id="i-glass" viewBox="0 0 24 24"><path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3zM12 15v6M8 21h8M5 5l3 2M19 5l-3 2"/></symbol>
+    <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M3 13v-2a9 9 0 0 1 18 0v2M3 13h4v7H5a2 2 0 0 1-2-2zM21 13h-4v7h2a2 2 0 0 0 2-2z"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.7-1.4-2.4 1.4-1.1a8 8 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.7 1.4 2.4-1.4 1.1a8 8 0 0 1 0 2z" transform="translate(-1 -1)"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5zM6 11v5c4 3 8 3 12 0v-5M22 9v7"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <a class="brand" href="#listening" aria-label="HeadsUp home">
+      <svg class="brand-mark"><use href="#i-wave" /></svg><span>HeadsUp</span>
+    </a>
+    <div class="top-actions">
+      <span class="backend-status" id="backendStatus"><i></i><span>Checking backend</span></span>
+      <button class="button button-outline button-small" id="openSignup">Sign up</button>
+      <button class="account-chip hidden" id="accountChip"><svg class="icon"><use href="#i-user" /></svg><span id="accountName">Account</span></button>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <section class="page page-active" id="page-listening" data-page="listening">
+      <div class="page-heading centered">
+        <h1>Listening dashboard</h1>
+        <p>Your music, with an ear on the world around you.</p>
+      </div>
+      <section class="listen-hero card">
+        <button class="listen-button" id="listenToggle" aria-pressed="false">
+          <svg class="icon mic-icon"><use href="#i-mic" /></svg>
+          <span id="listenButtonText">Start listening</span>
+        </button>
+        <div class="listen-status" id="listenStatus"><span class="status-dot"></span><span>Listening is off · microphone is not active</span></div>
+        <p class="listen-hint">Keep this tab open while HeadsUp listens. Headphones work best.</p>
+      </section>
+
+      <div class="dashboard-grid">
+        <section class="card music-card">
+          <div class="card-heading">
+            <div><h2>Connect your music</h2><p>Sign in to a music service to play your tracks.</p></div>
+            <span class="lock-label"><svg class="icon"><use href="#i-user" /></svg> Sign-in required</span>
+          </div>
+          <div class="provider-grid" id="providerGrid">
+            <article class="provider-option">
+              <div class="provider-brand spotify-brand"><span class="spotify-glyph">≋</span></div>
+              <div class="provider-copy"><h3>Spotify</h3><p>Connect your Spotify account.</p></div>
+              <button class="button spotify-button provider-connect" data-provider="spotify">Sign in</button>
+            </article>
+            <article class="provider-option">
+              <div class="provider-brand apple-brand"><span class="apple-glyph">♪</span></div>
+              <div class="provider-copy"><h3>Apple Music</h3><p>Connect your Apple Music account.</p></div>
+              <button class="button apple-button provider-connect" data-provider="apple">Sign in</button>
+            </article>
+          </div>
+          <div class="provider-note"><svg class="icon"><use href="#i-check" /></svg><span>Your music stays with your chosen service. HeadsUp doesn’t upload or store tracks.</span></div>
+          <div class="connected-player hidden" id="connectedPlayer">
+            <div class="connected-title"><span class="connected-check"><svg class="icon"><use href="#i-check" /></svg></span><div><strong id="connectedProviderName">Spotify connected</strong><small>Music service connected</small></div><button class="text-button" id="disconnectMusic">Disconnect</button></div>
+            <div class="player-placeholder"><div class="album-tile">♫</div><div class="player-track"><strong id="activeTrackTitle">Choose a playlist in your music service</strong><span>Playback controls will appear when the service is configured.</span></div><button class="round-play" disabled aria-label="Play music"><svg class="icon"><use href="#i-play" /></svg></button></div>
+          </div>
+        </section>
+
+        <section class="card confidence-card">
+          <div class="card-heading"><div><h2>Live sound confidence</h2><p>Most recent model prediction</p></div><span class="live-label"><i></i> Live</span></div>
+          <div class="confidence-list" id="confidenceList">
+            <div class="confidence-row" data-sound="alarm"><div class="confidence-label"><span>Alarm</span><b>—</b></div><div class="bar-track"><span class="bar-fill alarm-fill" style="width:0%"></span></div></div>
+            <div class="confidence-row" data-sound="knock"><div class="confidence-label"><span>Knock</span><b>—</b></div><div class="bar-track"><span class="bar-fill" style="width:0%"></span></div></div>
+            <div class="confidence-row" data-sound="car_horn"><div class="confidence-label"><span>Car horn</span><b>—</b></div><div class="bar-track"><span class="bar-fill" style="width:0%"></span></div></div>
+            <div class="confidence-row" data-sound="background"><div class="confidence-label"><span>Background</span><b>—</b></div><div class="bar-track"><span class="bar-fill background-fill" style="width:0%"></span></div></div>
+          </div>
+          <p class="confidence-footnote"><span class="info-dot">i</span> Music pauses when an enabled sound is detected.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-sounds" data-page="sounds">
+      <div class="page-heading"><h1>Sounds</h1><p>Choose what HeadsUp listens for.</p></div>
+      <section class="card sound-section">
+        <div class="section-title-row"><h2>Built-in sounds</h2><span>Fine-tune how easily a sound is detected</span></div>
+        <div class="sound-list" id="builtinSounds">
+          <article class="sound-item" data-id="alarm"><div class="sound-icon"><svg class="icon"><use href="#i-bell" /></svg></div><div class="sound-details"><strong>Alarm</strong><small>Detects alarm sounds (e.g., fire, smoke, or household alarms).</small></div><label class="switch"><input type="checkbox" data-sound-toggle="alarm" checked><span></span></label><div class="sensitivity"><span>Low</span><input type="range" min="20" max="95" value="78" data-threshold="alarm" aria-label="Alarm sensitivity"><span>High</span></div></article>
+          <article class="sound-item" data-id="knock"><div class="sound-icon"><svg class="icon"><use href="#i-knock" /></svg></div><div class="sound-details"><strong>Knock</strong><small>Detects knocking on a door or surface.</small></div><label class="switch"><input type="checkbox" data-sound-toggle="knock" checked><span></span></label><div class="sensitivity"><span>Low</span><input type="range" min="20" max="95" value="52" data-threshold="knock" aria-label="Knock sensitivity"><span>High</span></div></article>
+          <article class="sound-item" data-id="car_horn"><div class="sound-icon"><svg class="icon"><use href="#i-car" /></svg></div><div class="sound-details"><strong>Car horn</strong><small>Detects car horns and other vehicle warning sounds.</small></div><label class="switch"><input type="checkbox" data-sound-toggle="car_horn" checked><span></span></label><div class="sensitivity"><span>Low</span><input type="range" min="20" max="95" value="88" data-threshold="car_horn" aria-label="Car horn sensitivity"><span>High</span></div></article>
+          <article class="sound-item" data-id="dog_bark"><div class="sound-icon"><svg class="icon"><use href="#i-dog" /></svg></div><div class="sound-details"><strong>Dog bark</strong><small>Detects dog barking sounds.</small></div><label class="switch"><input type="checkbox" data-sound-toggle="dog_bark"><span></span></label><div class="sensitivity"><span>Low</span><input type="range" min="20" max="95" value="58" data-threshold="dog_bark" aria-label="Dog bark sensitivity"><span>High</span></div></article>
+          <article class="sound-item" data-id="glass_breaking"><div class="sound-icon"><svg class="icon"><use href="#i-glass" /></svg></div><div class="sound-details"><strong>Glass breaking</strong><small>Detects breaking glass (e.g., window or bottle).</small></div><label class="switch"><input type="checkbox" data-sound-toggle="glass_breaking"><span></span></label><div class="sensitivity"><span>Low</span><input type="range" min="20" max="95" value="82" data-threshold="glass_breaking" aria-label="Glass breaking sensitivity"><span>High</span></div></article>
+          <article class="sound-item reference-row"><div class="sound-icon"><svg class="icon"><use href="#i-headphones" /></svg></div><div class="sound-details"><strong>Background sounds</strong><small>Monitors background audio to provide detection context.</small></div><span class="reference-pill"><svg class="icon"><use href="#i-check" /></svg> Active reference</span></article>
+        </div>
+      </section>
+      <section class="card sound-section custom-sounds-section">
+        <div class="section-title-row"><h2>Custom sounds</h2><button class="button button-primary button-small" data-go="teach"><svg class="icon"><use href="#i-plus" /></svg> Teach a sound</button></div>
+        <div id="customSoundsList" class="custom-sounds-list"><p class="empty-inline">No custom sounds saved yet. Teach HeadsUp a sound that matters to you.</p></div>
+      </section>
+    </section>
+
+    <section class="page" id="page-settings" data-page="settings">
+      <div class="page-heading"><h1>Settings</h1><p>Adjust how HeadsUp works for you.</p></div>
+      <div class="settings-grid">
+        <section class="card settings-card"><h2>Alert behavior</h2><p class="card-subtitle">Make every interruption work for you.</p>
+          <div class="setting-row"><div class="setting-icon"><svg class="icon"><use href="#i-wave" /></svg></div><div class="setting-copy"><strong>Pause HeadsUp music when a sound is detected</strong><small>Lowers or pauses music so you can hear the alert clearly.</small></div><label class="switch"><input type="checkbox" data-setting="pauseMusic" checked><span></span></label></div>
+          <div class="setting-row"><div class="setting-icon"><svg class="icon"><use href="#i-play" /></svg></div><div class="setting-copy"><strong>Resume music when I dismiss an alert</strong><small>Restarts music after you dismiss the alert.</small></div><label class="switch"><input type="checkbox" data-setting="resumeMusic" checked><span></span></label></div>
+          <div class="setting-row"><div class="setting-icon"><svg class="icon"><use href="#i-wave" /></svg></div><div class="setting-copy"><strong>Show confidence in alerts</strong><small>Display how sure HeadsUp is about a detection.</small></div><label class="switch"><input type="checkbox" data-setting="showConfidence" checked><span></span></label></div>
+          <div class="setting-row"><div class="setting-icon"><svg class="icon"><use href="#i-bell" /></svg></div><div class="setting-copy"><strong>Play an alert tone</strong><small>Play a short chime when a sound is detected.</small></div><label class="switch"><input type="checkbox" data-setting="alertTone"><span></span></label></div>
+        </section>
+        <div class="settings-side">
+          <section class="card settings-card"><h2>Microphone</h2><div class="device-line"><div class="setting-icon"><svg class="icon"><use href="#i-mic" /></svg></div><div class="setting-copy"><strong>Input device</strong><small>Audio is processed while listening is on.</small></div></div><select id="micDevice" class="select-control"><option value="">Default microphone</option></select><p class="permission-status" id="micPermission"><span class="status-dot"></span> Microphone permission is requested when listening starts.</p></section>
+          <section class="card settings-card"><h2>Appearance</h2><div class="theme-options"><label class="theme-option"><input type="radio" name="theme" value="light" checked><span><svg class="icon"><use href="#i-sun" /></svg><strong>Light</strong><small>A bright, light theme.</small></span></label><label class="theme-option"><input type="radio" name="theme" value="dark"><span><svg class="icon"><use href="#i-moon" /></svg><strong>Dark</strong><small>For low-light environments.</small></span></label><label class="theme-option"><input type="radio" name="theme" value="system"><span><svg class="icon"><use href="#i-settings" /></svg><strong>System</strong><small>Matches your device theme.</small></span></label></div></section>
+        </div>
+      </div>
+      <section class="card api-settings"><div><h2>Backend connection</h2><p>Set the FastAPI server URL used for sound predictions and custom sounds.</p></div><div class="api-edit"><input id="apiBaseInput" type="url" value="http://localhost:8000" aria-label="Backend URL"><button class="button button-outline button-small" id="saveApiBase">Save</button></div></section>
+      <button class="card account-row" id="accountSettings"><span class="setting-icon"><svg class="icon"><use href="#i-user" /></svg></span><span><strong>Account</strong><small>Manage your account and connected music service.</small></span><svg class="icon"><use href="#i-chevron" /></svg></button>
+    </section>
+
+    <section class="page" id="page-teach" data-page="teach">
+      <div class="page-heading"><h1>Teach HeadsUp a sound</h1><p>Add a sound from your world.</p></div>
+      <div class="stepper"><div class="step done"><span><svg class="icon"><use href="#i-check" /></svg></span><strong>1. Name the sound</strong></div><i></i><div class="step active"><span>2</span><strong>2. Record examples</strong></div><i></i><div class="step"><span>3</span><strong>3. Save the sound</strong></div></div>
+      <section class="card teach-card">
+        <div class="teach-main">
+          <label class="field-label" for="soundName">Sound name</label>
+          <input id="soundName" class="text-input sound-name-input" maxlength="40" placeholder="e.g. Roommate’s knock">
+          <small class="field-hint">Use a clear name you’ll recognize in an alert.</small>
+          <div class="record-heading"><div><h2>Record 5 examples</h2><p>Record the sound from a few different angles and distances.</p></div><span id="sampleCount" class="sample-counter">0 of 5 samples recorded</span></div>
+          <div class="sample-list" id="sampleList"></div>
+          <div class="teach-actions"><button class="text-button" id="cancelTeach">Cancel</button><button class="button button-primary" id="saveCustomSound" disabled>Save custom sound</button></div>
+        </div>
+        <aside class="record-tip"><div class="tip-icon"><svg class="icon"><use href="#i-mic" /></svg></div><strong>Microphone ready</strong><p>Record in a quiet place and include a little natural variation.</p><small>HeadsUp sends these examples to your backend to create the custom sound.</small></aside>
+      </section>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-nav="listening"><svg class="icon"><use href="#i-mic" /></svg><span>Listening</span></button>
+    <button class="nav-item" data-nav="sounds"><svg class="icon"><use href="#i-wave" /></svg><span>Sounds</span></button>
+    <button class="nav-item" data-nav="settings"><svg class="icon"><use href="#i-settings" /></svg><span>Settings</span></button>
+    <button class="nav-item" data-nav="teach"><svg class="icon"><use href="#i-cap" /></svg><span>Teach a sound</span></button>
+  </nav>
+
+  <dialog class="modal" id="providerModal">
+    <form method="dialog" class="modal-close-form"><button class="modal-close" aria-label="Close">×</button></form>
+    <div class="modal-icon" id="providerModalIcon"><svg class="icon"><use href="#i-wave" /></svg></div>
+    <h2 id="providerModalTitle">Connect your music</h2>
+    <p id="providerModalText">Music service sign-in needs provider credentials and a secure authorization callback configured by the project team.</p>
+    <div class="notice-box"><strong>What happens next</strong><span>Once OAuth is configured, this button will open the provider’s secure sign-in page. HeadsUp will not ask for your music password.</span></div>
+    <button class="button button-primary modal-action" id="providerModalAction">Got it</button>
+  </dialog>
+
+  <dialog class="modal" id="signupModal">
+    <form method="dialog" class="modal-close-form"><button class="modal-close" aria-label="Close">×</button></form>
+    <div class="modal-icon"><svg class="icon"><use href="#i-user" /></svg></div>
+    <h2>Create your HeadsUp account</h2>
+    <p>Save your settings and remember which music service you connected.</p>
+    <form id="signupForm" class="signup-form">
+      <label>Name<input name="name" autocomplete="name" required placeholder="Your name"></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+      <button class="button button-primary modal-action" type="submit">Create account</button>
+    </form>
+    <small class="form-footnote">Account creation needs the project’s authentication backend.</small>
+  </dialog>
+
+  <dialog class="modal alert-modal" id="alertModal">
+    <form method="dialog" class="modal-close-form"><button class="modal-close" aria-label="Close">×</button></form>
+    <div class="alert-symbol"><svg class="icon"><use href="#i-bell" /></svg></div>
+    <p class="eyebrow">HeadsUp detected</p><h2 id="alertSoundName">Alarm</h2><div class="alert-confidence" id="alertConfidence">94% confidence</div><p class="alert-copy">A sound you enabled may need your attention.</p>
+    <button class="button button-primary modal-action" id="dismissAlert">Got it</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
